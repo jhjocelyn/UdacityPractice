@@ -1,0 +1,50 @@
+body{
+  font-family:Comic Sans MS, Comic Sans, cursive;
+  font-weight:lighter;
+  background-color:#F7D1CD;
+}
+span{
+  font-weight:bold;
+}
+div,#animalCard{
+  border: 1px solid #D3D3D3;
+}
+#animal{
+  padding-left:20px;
+  font-size:25px;
+  font-weight:bold;
+}
+#animalCard{
+  width:300px;
+  height:300px;
+  margin:0px 20px 20px 20px;
+}
+#animalCard:hover{
+  box-shadow: 6px 6px 3px #B392AC;
+  cursor:pointer;
+  border:7px solid #735D78;
+}
+#characteristic{
+  list-style:none;
+  padding:10px;
+}
+.italic{
+  font-style:italic;
+}
+.pageContainer{
+  margin:10px;
+  width:342px;
+  box-shadow:8px 8px 5px  #D3D3D3;
+  border-radius:10px;
+  background-color: white;
+  opacity:0.8;
+
+}
+.desContainer{
+  margin:0px 20px 20px 20px;
+  width:300px;
+}
+p{
+  padding:10px;
+  text-align:justify;
+}
