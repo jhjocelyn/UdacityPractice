@@ -129,7 +129,7 @@ a {
 
 /* TODO: Replace with image later */
 div#header {
-   background-image: url(images/bg.jpg);
+   background-image: url(../images/bg.jpg);
    background-size: cover;
   /*: #484848;*/
 }
