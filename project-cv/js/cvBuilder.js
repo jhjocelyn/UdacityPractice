@@ -4,14 +4,14 @@
 var bio ={
     "name": "蒋慧",
     "role": "初级前端工程师",
-    "contact info":{
-    "mobile": "15686110467",
-    "email":"jhjocelyn@outlook.com",
-    "github":"jhjocelyn",
-    "weChat":"Jocelyn_Jiang0906",
-    "location":"西安 中国"
+    "contact":{
+        "mobile": "15686110467",
+        "email":"jhjocelyn@outlook.com",
+        "github":"jhjocelyn",
+        "weChat":"Jocelyn_Jiang0906",
+        "location":"西安 中国"
     },
-    "welcomeMsg": "澹泊明志，宁静致远",
+    "welcomeMessage": "澹泊明志，宁静致远",
     "skills":["Java","JavaScript","HTML","CSS","JQuery","Bootstrap","Git"],
     "biopic":"images/jh.jpg"
 };
@@ -20,35 +20,24 @@ bio.display = function (){
     var name = HTMLheaderName.replace("%data%",bio.name);
     var role = HTMLheaderRole.replace("%data%",bio.role);
 
-    $("#header").prepend(role);
-    $("#header").prepend(name);
+    $("#header").prepend(role,name);
 
-    var mobile = HTMLmobile.replace("%data%",bio["contact info"].mobile);
-    var email = HTMLemail.replace("%data%",bio["contact info"].email);
-    var github = HTMLgithub.replace("%data%",bio["contact info"].github);
-    var weChat = HTMLweChat.replace("%data%",bio["contact info"].weChat);
-    var location = HTMLlocation.replace("%data%",bio["contact info"].location);
+    var mobile = HTMLmobile.replace("%data%",bio["contact"].mobile);
+    var email = HTMLemail.replace("%data%",bio["contact"].email);
+    var github = HTMLgithub.replace("%data%",bio["contact"].github);
+    var weChat = HTMLweChat.replace("%data%",bio["contact"].weChat);
+    var location = HTMLlocation.replace("%data%",bio["contact"].location);
 
 
-    $("#topContacts").append(mobile);
-    $("#topContacts").append(email);
-    $("#topContacts").append(github);
-    $("#topContacts").append(weChat);
-    $("#topContacts").append(location);
+    $("#topContacts","#footerContacts").append(mobile,email,github,weChat,location);
 
 //footer:contacts display
-
-    $("#footerContacts").append(mobile);
-    $("#footerContacts").append(email);
-    $("#footerContacts").append(github);
-    $("#footerContacts").append(weChat);
-    $("#footerContacts").append(location);
-
+    $("#footerContacts").append(mobile,email,github,weChat,location);
+    
     var bioPicture = HTMLbioPic.replace("%data%",bio.biopic);
-    var bioMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMsg);
+    var bioMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
-    $("#header").append(bioPicture);
-    $("#header").append(bioMsg);
+    $("#header").append(bioPicture,bioMsg);
 
     if(bio.skills.length>0){
         $("#header").append(HTMLskillsStart);
@@ -77,21 +66,22 @@ var work ={
 
 work.display = function(){
     $("#workExperience").append(HTMLworkStart);
-    for (job in work.jobs){
-        var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
-        var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+    for(let i=0; i<work.jobs.length;i++){
+        var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[i].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[i].title);
         var formattedEmployerTitle = formattedEmployer + formattedTitle;
         $(".work-entry:last").append(formattedEmployerTitle);
 
-        var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+        var formattedDates = HTMLworkDates.replace("%data%",work.jobs[i].dates);
         $(".work-entry:last").append(formattedDates);
 
-        var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+        var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[i].location);
         $(".work-entry:last").append(formattedLocation);
 
-        var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+        var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[i].description);
         $(".work-entry:last").append(formattedDescription);
     }
+    
 }
 
 work.display();
@@ -143,44 +133,48 @@ project.display();
 
 //Part4-Education
 var education = {
-     school:[
-         {
-             "name":"西安交通-利物浦大学",
-             "location":"Xiaan",
-             "major":"通信工程",
-             "degree":"学士学位",
-             "dates":"2012-2014"
-         },
-         {
-             "name":"英国利物浦大学",
-             "location":"Liverpool",
-             "major":"通信工程",
-             "degree":"学士学位",
-             "dates":"2014-2016"
-         },
-         {
-              "name":"墨尔本大学",
-              "location":"Melbourne",
-              "major":"IT",
-              "degree":"研究生学位",
-              "dates": "2017-2019"
-          }
-     ]
+     schools:[
+                 {
+                     "name":"西安交通-利物浦大学",
+                     "location":"Suzhou",
+                     "degree":"学士学位",
+                     "majors":["通信工程"],
+                     "dates":"2012-2014",
+                     "url":"www.xjtlu.edu.cn/zh"
+                 },
+                 {
+                     "name":"英国利物浦大学",
+                     "location":"Liverpool",
+                     "degree":"学士学位",
+                     "majors":["通信工程"],
+                     "dates":"2014-2016",
+                     "url":"https://www.liverpool.ac.uk/"
+                 },
+                 {
+                      "name":"墨尔本大学",
+                      "location":"Melbourne",
+                      "degree":"研究生学位",
+                      "majors":["IT"],
+                      "dates": "2017-2019",
+                      "url":"http://www.unimelb.edu.au"
+                  }
+            ],
 };
 
 education.display = function (){
-    education.school.forEach(function (sch){
+    education.schools.forEach(function (sch){
        $("#education").append(HTMLschoolStart);
        var schName = HTMLschoolName.replace("%data%",sch.name);
        var schDegree = HTMLschoolDegree.replace("%data%",sch.degree);
        var schDates = HTMLschoolDegree.replace("%data%",sch.dates);
        var schLocation = HTMLschoolLocation.replace("%data%",sch.location);
-       var schMajor = HTMLschoolMajor.replace("%data%",sch.major);
-       $(".education-entry:last").append(schName);
-       $(".education-entry:last").append(schDates);
-       $(".education-entry:last").append(schLocation);
-       $(".education-entry:last").append(schMajor);
-       $(".education-entry:last").append(schDegree);
+
+       sch.majors.forEach(function(major){
+            var schMajor = HTMLschoolMajor.replace("%data%",major);
+            $(".education-entry:last").append(schMajor);
+       });
+       
+       $(".education-entry:last").append(schName,schDates,schLocation,schDegree);
     });
 
 };
@@ -188,24 +182,3 @@ education.display = function (){
 education.display();
 
 $("#mapDiv").append(googleMap);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
