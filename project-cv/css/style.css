@@ -60,7 +60,6 @@ h5 {
     padding: 10px 5%;
 }
 
-
 .date-text {
     font-style: italic;
     font-size: 14px;
@@ -125,11 +124,6 @@ a {
     background-color: #4a4a4a;
 }
 
-
-
-
-
-
 /* TODO: Replace with image later */
 
 div#header {
@@ -181,11 +175,6 @@ span {
 #lets-connect {
     text-align: center;
 }
-
-
-
-
-
 
 /* Media queries to handle various device widths */
 
